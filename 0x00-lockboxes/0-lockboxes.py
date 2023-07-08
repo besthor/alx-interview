@@ -3,6 +3,7 @@
 
 
 def canUnlockAll(boxes):
+"""Checks if all boxes can be unlocked"""
 
     if (type(boxes) is not list):
         return False
