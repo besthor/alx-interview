@@ -19,8 +19,7 @@ request(filmURL + filmNum, async function (err, res, body) {
       request(charURL, function (err, res, body) {
         if (err) return console.error(err);
 
-        // Parse the charcter nformation and print the character's name
-	      // Resolve the promise to indicate completion
+        // Parse the charcter nformation and print the character's name Resolve the promise to indicate completion
         console.log(JSON.parse(body).name);
         resolve();
       });
