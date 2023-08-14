@@ -15,11 +15,11 @@ request(filmURL + filmNum, async function (err, res, body) {
   // Iterate through the character URLs and fetch character information
   for (const charURL of charURLList) {
     await new Promise(function (resolve, reject) {
-  // Make a request to each character URL
+	    // Make a request to each character URL
       request(charURL, function (err, res, body) {
         if (err) return console.error(err);
-
-        // Parse the character information and print the character's name
+	      
+	      // Parse the character information and print the character's name
         console.log(JSON.parse(body).name);
         resolve(); // Resolve the promise to indicate completion
       });
