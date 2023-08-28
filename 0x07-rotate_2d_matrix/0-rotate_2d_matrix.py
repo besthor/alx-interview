@@ -3,10 +3,11 @@
 Rotate 2D Matrix
 """
 
+
 def rotate_2d_matrix(matrix):
     """
-    Rotate a 2D matrix 90 degrees clockwise.
-    
+    Rotate a 2D matrix 90 ddegrees clockwise.
+
     Args:
         matrix (list of lists): The input 2D matrix to be rotated.
     """
@@ -15,7 +16,7 @@ def rotate_2d_matrix(matrix):
         # Iterate through the elements within each layer
         for j in range(i, (len(matrix) - i - 1)):
             # Calculate the positions of the elements in the rotation
-            x = (len(matrix) - 1 - j)
+            x = (len(matrix) -i - j)
             # Store the current element
             tmp = matrix[i][j]
             # Perform the rotation of elements
