@@ -1,9 +1,9 @@
 #!/usr/bin/python3
-'''Prime Game'''
+"""Prime Game"""
 
 
 def isWinner(x, nums):
-    '''finds the winner'''
+    """finds the winner"""
     winnerCounter = {'Maria': 0, 'Ben': 0}
 
     for i in range(x):
@@ -20,7 +20,7 @@ def isWinner(x, nums):
 
 
 def isRoundWinner(n, x):
-    '''find round winner'''
+    """find round winner"""
     list = [i for i in range(1, n + 1)]
     players = ['Maria', 'Ben']
 
