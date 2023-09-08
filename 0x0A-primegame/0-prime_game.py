@@ -1,8 +1,8 @@
 #!/usr/bin/python3
-""" Solving prime game """
+""" Module for solving prime game question """
 
 def isWinner(x, nums):
-    """Function that determines the winner"""
+    """function that checks for the winner"""
     if not nums or x < 1:
         return None
     max_num = max(nums)
