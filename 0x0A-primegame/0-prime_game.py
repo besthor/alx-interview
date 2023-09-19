@@ -1,66 +1,63 @@
 #!/usr/bin/python3
-'''Prime Game'''
+""" Prime Game """
+
+
+def isprime(n):
+    """ n: number to check if it is prime"""
+    for i in range(2, n):
+        if n % i == 0:
+            return False
+    return True
+
+
+def delete_numbers(n, nums):
+    """ delete numbers - assign zero """
+    for i in range(len(nums)):
+        if nums[i] % n == 0:
+            nums[i] = 0
 
 
 def isWinner(x, nums):
-    '''finds the winner'''
-    winnerCounter = {'Maria': 0, 'Ben': 0}
-
-    for i in range(x):
-        roundWinner = isRoundWinner(nums[i], x)
-        if roundWinner is not None:
-            winnerCounter[roundWinner] += 1
-
-    if winnerCounter['Maria'] > winnerCounter['Ben']:
-        return 'Maria'
-    elif winnerCounter['Ben'] > winnerCounter['Maria']:
-        return 'Ben'
-    else:
-        return None
-
-
-def isRoundWinner(n, x):
-    '''find round winner'''
-    list = [i for i in range(1, n + 1)]
-    players = ['Maria', 'Ben']
-
-    for i in range(n):
-        # get current player
-        currentPlayer = players[i % 2]
-        selectedIdxs = []
-        prime = -1
-        for idx, num in enumerate(list):
-            # if already picked prime num then
-            # find if num is multipl of the prime num
-            if prime != -1:
-                if num % prime == 0:
-                    selectedIdxs.append(idx)
-            # else check is num is prime then pick it
+    """ where x is the number of rounds and nums is an array of n
+        Return: name of the player that won the most rounds
+        Iriaf the winner cannot be determined, return None
+        You can assume n and x will not be larger than 10000
+    """
+    nums.sort()
+    winner = False
+    Maria = 0
+    Ben = 0
+    for game in range(x):
+        # print("game# ", game+1)
+        nums2 = list(range(1, nums[game] + 1))
+        # print("nums: ", nums2)
+        turn = 0
+        while True:
+            """
+            # uncomment to monitor turns
+            if turn % 2 != 0:
+                print("Ben turn ")
             else:
-                if isPrime(num):
-                    selectedIdxs.append(idx)
-                    prime = num
-        # if failed to pick then current player lost
-        if prime == -1:
-            if currentPlayer == players[0]:
-                return players[1]
-            else:
-                return players[0]
+                print("Maria turn ")
+            """
+            change = False
+            for i, n in enumerate(nums2):
+                # print("n: ", n, "i: ", i)
+                if n > 1 and isprime(n):
+                    delete_numbers(n, nums2)
+                    change = True
+                    turn += 1
+                    break
+            # print("movement: ", nums2)
+            if change is False:
+                break
+        if turn % 2 != 0:
+            Maria += 1
         else:
-            for idx, val in enumerate(selectedIdxs):
-                del list[val - idx]
-    return None
-
-
-def isPrime(n):
-    # 0, 1, even numbers greater than 2 are NOT PRIME
-    if n == 1 or n == 0 or (n % 2 == 0 and n > 2):
-        return False
-    else:
-        # Not prime if divisable by another number less
-        # or equal to the square root of itself.
-        # n**(1/2) returns square root of n
-        for i in range(3, int(n**(1/2))+1, 2):
-            if n % i == 0:
-                return "Not prime"
-        return True
+            Ben += 1
+        # print("Maria: {}, Ben: {}".format(Maria, Ben))
+    if Maria == Ben:
+        return None
+    if Maria > Ben:
+        return "Maria"
+    return "Ben"
