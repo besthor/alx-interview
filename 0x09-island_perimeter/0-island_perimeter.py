@@ -16,7 +16,7 @@ def island_perimeter(grid):
                     perimeter += 1
                 if column - 1 < 0 or grid[row][column - 1] == 0:
                     perimeter += 1
-                if col + 1 >= len(grid[row]) or grid[row][column + 1] == 0:
+                if column + 1 >= len(grid[row]) or grid[row][column + 1] == 0:
                     perimeter += 1
                 if row + 1 >= grid_length or grid[row + 1][column] == 0:
                     perimeter += 1
