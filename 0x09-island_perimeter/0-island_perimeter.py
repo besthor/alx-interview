@@ -1,12 +1,12 @@
 #!/usr/bin/python3
 """
-This module contains a function that returns the perimeter of an island
+A module that contains a function that returns the perimeter of an island
 described in grid
 """
 
 
 def island_perimeter(grid):
-    """this function returns the perimeter of an island described by grid"""
+    """A function that outputs the perimeter of an island described by grid"""
     perimeter = 0
     grid_len = len(grid)
     for row in range(grid_len):
